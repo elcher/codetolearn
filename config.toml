@@ -1,4 +1,5 @@
 baseURL = 'https://yoyoono.gitee.io/codetolearn'
+publishURL = 'docs'
 languageCode = 'zh-cn'
 title = 'Code to Learn'
 copyright = "© Yoyo Ono 2022"
