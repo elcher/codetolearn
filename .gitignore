@@ -6,6 +6,8 @@
 /hugo
 /.idea
 hugo.exe
+*.lock
+publish_to_ghpages.sh
 *.test
 *.prof
 nohup.out
