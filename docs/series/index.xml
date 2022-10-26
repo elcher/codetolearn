@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Series on Code to Learn</title>
+    <link>https://yoyoono.gitee.io/codetolearn/series/</link>
+    <description>Recent content in Series on Code to Learn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>© Yoyo Ono 2022</copyright>
+    <lastBuildDate>Wed, 26 Oct 2022 13:56:51 +0800</lastBuildDate><atom:link href="https://yoyoono.gitee.io/codetolearn/series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>代码随想录算法训练营</title>
+      <link>https://yoyoono.gitee.io/codetolearn/series/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95%E7%AE%97%E6%B3%95%E8%AE%AD%E7%BB%83%E8%90%A5/</link>
+      <pubDate>Wed, 26 Oct 2022 13:56:51 +0800</pubDate>
+      
+      <guid>https://yoyoono.gitee.io/codetolearn/series/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95%E7%AE%97%E6%B3%95%E8%AE%AD%E7%BB%83%E8%90%A5/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

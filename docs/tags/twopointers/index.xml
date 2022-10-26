@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>twoPointers on Code to Learn</title>
+    <link>https://yoyoono.gitee.io/codetolearn/tags/twopointers/</link>
+    <description>Recent content in twoPointers on Code to Learn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>© Yoyo Ono 2022</copyright>
+    <lastBuildDate>Wed, 26 Oct 2022 13:56:51 +0800</lastBuildDate><atom:link href="https://yoyoono.gitee.io/codetolearn/tags/twopointers/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Day 1 数组</title>
+      <link>https://yoyoono.gitee.io/codetolearn/posts/my-first-post/</link>
+      <pubDate>Wed, 26 Oct 2022 13:56:51 +0800</pubDate>
+      
+      <guid>https://yoyoono.gitee.io/codetolearn/posts/my-first-post/</guid>
+      <description>数组理论基础 首先要知道数组在内存中的存储方式，这样才能真正理解数组相关的面试题
+Coding Problems 704.二分查找 看讲解前 这道题之前做过。这次做思路更清晰了，但是还是改了两次才通过。最后的通过代码如下。
+1 2 3 4 5 6 7 8 9 10 11 12 13 class Solution: def search(self, nums: List[int], target: int) -&amp;gt; int: left, right = 0, len(nums) - 1 while left &amp;lt;= right: # left 可以等于 right pivot = left + (right - left) // 2 if nums[pivot] == target: return pivot elif nums[pivot] &amp;lt; target: left = pivot + 1 else: right = pivot - 1 return -1 # 不要忘写 第一个错误是while循环结束后没写return语句，也就是没写第 13 行代码，结果找不到target时，输出了None而不是-1。这是个说大不大说小不小的错误。说不大是因为看到 output 和 expected 的对比，很容易就可以改对。说不小是因为在写代码的时候，一定要搞清楚对 output 的要求，不然会耽误很多时间 debug。</description>
+    </item>
+    
+  </channel>
+</rss>

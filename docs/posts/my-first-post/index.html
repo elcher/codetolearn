@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="Day 1 数组" />
+<meta property="og:description" content="数组理论基础 首先要知道数组在内存中的存储方式，这样才能真正理解数组相关的面试题
+Coding Problems 704.二分查找 看讲解前 这道题之前做过。这次做思路更清晰了，但是还是改了两次才通过。最后的通过代码如下。
+1 2 3 4 5 6 7 8 9 10 11 12 13 class Solution: def search(self, nums: List[int], target: int) -&gt; int: left, right = 0, len(nums) - 1 while left &lt;= right: # left 可以等于 right pivot = left &#43; (right - left) // 2 if nums[pivot] == target: return pivot elif nums[pivot] &lt; target: left = pivot &#43; 1 else: right = pivot - 1 return -1 # 不要忘写 第一个错误是while循环结束后没写return语句，也就是没写第 13 行代码，结果找不到target时，输出了None而不是-1。这是个说大不大说小不小的错误。说不大是因为看到 output 和 expected 的对比，很容易就可以改对。说不小是因为在写代码的时候，一定要搞清楚对 output 的要求，不然会耽误很多时间 debug。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://yoyoono.gitee.io/codetolearn/posts/my-first-post/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-26T13:56:51+08:00" />
+<meta property="article:modified_time" content="2022-10-26T13:56:51+08:00" />
+
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Day 1 数组"/>
+<meta name="twitter:description" content="数组理论基础 首先要知道数组在内存中的存储方式，这样才能真正理解数组相关的面试题
+Coding Problems 704.二分查找 看讲解前 这道题之前做过。这次做思路更清晰了，但是还是改了两次才通过。最后的通过代码如下。
+1 2 3 4 5 6 7 8 9 10 11 12 13 class Solution: def search(self, nums: List[int], target: int) -&gt; int: left, right = 0, len(nums) - 1 while left &lt;= right: # left 可以等于 right pivot = left &#43; (right - left) // 2 if nums[pivot] == target: return pivot elif nums[pivot] &lt; target: left = pivot &#43; 1 else: right = pivot - 1 return -1 # 不要忘写 第一个错误是while循环结束后没写return语句，也就是没写第 13 行代码，结果找不到target时，输出了None而不是-1。这是个说大不大说小不小的错误。说不大是因为看到 output 和 expected 的对比，很容易就可以改对。说不小是因为在写代码的时候，一定要搞清楚对 output 的要求，不然会耽误很多时间 debug。"/>
+
+  
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#262d33">
+  <title>
+    
+    Code to Learn - Day 1 数组
+    
+  </title>
+  
+  <link rel="shortcut icon" href="/codetolearn/favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  
+  
+  
+  <link rel="stylesheet" href="/codetolearn/minima.1666803086.css">
+
+  
+  
+  <script defer type="text/javascript" src="/codetolearn/minima.1666803086.js"></script>
+</head>
+<script>
+  
+  let theme_2b_used = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+
+  try {
+    if (!('theme' in localStorage)) {
+      const default_theme = 'system';
+      
+      
+      if (default_theme === 'dark' || default_theme === 'light') {
+        theme_2b_used = default_theme;
+      }
+
+      
+      localStorage.theme = theme_2b_used;
+    }
+    
+    document.querySelector('html').classList.add(localStorage.theme);
+  } catch (e) {
+    console.error(e);
+  }
+</script>
+
+
+<body class=" sm:mx-5 sm:my-0">
+  <header class="flex justify-between items-center mb-6 sm:my-3">
+  <div class="flex items-center">
+    
+    <div id="theme-switcher" class="text-4xl cursor-pointer">🌝</div>
+  </div>
+  <nav class="flex items-center
+    whitespace-nowrap overflow-x-auto overflow-y-hidden">
+    
+    <a class="ml-5" href="/codetolearn/">Home</a>
+    
+    <a class="ml-5" href="/codetolearn/categories">Categories</a>
+    
+    <a class="ml-5" href="/codetolearn/series">Series</a>
+    
+    <a class="ml-5" href="/codetolearn/about">About</a>
+    
+  </nav>
+</header>
+  
+  
+
+<h1 class="mt-6 mb-6">Day 1 数组</h1>
+<div class="mb-3 text-xs flex justify-between sm:flex-col">
+	<div>
+	
+		Posted at &mdash; Oct 26, 2022
+	
+		
+	</div>
+	
+	<div class="sm:mt-4">
+		
+		<a class="not-first:ml-3" href="/tags/array">#array</a>
+		
+		<a class="not-first:ml-3" href="/tags/java">#java</a>
+		
+		<a class="not-first:ml-3" href="/tags/python">#python</a>
+		
+		<a class="not-first:ml-3" href="/tags/binarySearch">#binarySearch</a>
+		
+		<a class="not-first:ml-3" href="/tags/twoPointers">#twoPointers</a>
+		
+	</div>
+	
+</div>
+<main>
+	<p></p>
+	<article class="md">
+		<h2 id="数组理论基础httpsprogrammercarlcome695b0e7bb84e79086e8aebae59fbae7a180htmle695b0e7bb84e79086e8aebae59fbae7a180"><a href="https://programmercarl.com/%E6%95%B0%E7%BB%84%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80.html#%E6%95%B0%E7%BB%84%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80">数组理论基础</a></h2>
+<blockquote>
+<p>首先要知道数组在内存中的存储方式，这样才能真正理解数组相关的面试题</p>
+</blockquote>
+<hr>
+<h2 id="coding-problems">Coding Problems</h2>
+<h3 id="704二分查找httpsleetcodecnproblemsbinary-search"><a href="https://leetcode.cn/problems/binary-search/">704.二分查找</a></h3>
+<h4 id="看讲解前">看讲解前</h4>
+<p>这道题之前做过。这次做思路更清晰了，但是还是改了两次才通过。最后的通过代码如下。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="p">:</span>    <span class="c1"># left 可以等于 right</span>
+</span></span><span class="line"><span class="cl">            <span class="n">pivot</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="p">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">pivot</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="n">pivot</span>
+</span></span><span class="line"><span class="cl">            <span class="k">elif</span> <span class="n">nums</span><span class="p">[</span><span class="n">pivot</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">target</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">left</span> <span class="o">=</span> <span class="n">pivot</span> <span class="o">+</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">right</span> <span class="o">=</span> <span class="n">pivot</span> <span class="o">-</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">                
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>               <span class="c1"># 不要忘写</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>第一个错误是<code>while</code>循环结束后没写<code>return</code>语句，也就是没写第 13 行代码，结果找不到<code>target</code>时，输出了<code>None</code>而不是<code>-1</code>。这是个说大不大说小不小的错误。说不大是因为看到 output 和 expected 的对比，很容易就可以改对。说不小是因为在写代码的时候，一定要搞清楚对 output 的要求，不然会耽误很多时间 debug。</p>
+<p>第二个错误是<code>while</code>语句的边界条件没考虑到<code>left == right</code>的情况，也就是第 4 行代码的条件里只写了小于没写等于。这属于经验主义错误，写代码时没认真考虑。当数组只有一个数值时，<code>left == right</code>，这没有任何问题，所以之前是做什么题的时候让自己变得如此畏畏缩缩不敢加那个小小的<code>=</code>呢？感觉可以以后留心总结一下。</p>
+<p>下面贴一下我上次做这题时写的答案吧。感觉自己进步了。过去写的代码好繁琐啊，为啥一定要追求指针也是答案这个点呢？现在的我可能审美变了，不是很能理解当时的想法了。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="ow">not</span> <span class="n">nums</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="n">left</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">right</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">pivot</span> <span class="o">=</span> <span class="p">(</span><span class="n">left</span> <span class="o">+</span> <span class="n">right</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span> <span class="c1"># 有数值溢出的风险</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">pivot</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">target</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">left</span> <span class="o">=</span> <span class="n">pivot</span>
+</span></span><span class="line"><span class="cl">            <span class="k">elif</span> <span class="n">nums</span><span class="p">[</span><span class="n">pivot</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">right</span> <span class="o">=</span> <span class="n">pivot</span> 
+</span></span><span class="line"><span class="cl">            <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">right</span> <span class="o">=</span> <span class="n">pivot</span> 
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">left</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">left</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">right</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">right</span>
+</span></span><span class="line"><span class="cl">                
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="看讲解后">看讲解后</h4>
+<h3 id="27移除元素httpsleetcodecnproblemsremove-element"><a href="https://leetcode.cn/problems/remove-element/">27.移除元素</a></h3>
+<h4 id="看讲解前-1">看讲解前</h4>
+<p>这是一道没做过的题。但是感觉关键在于找到<code>val</code>和去掉<code>val</code>这两步。找到<code>val</code>很容易，上一题已经实践过了。去掉<code>val</code>是这题需要解决的新问题。Carl 讲过的数组的底层结构对解决这个问题就很关键了。数组里删去元素更像是用目标坐标后的元素依次往前挪一位，所以我想到的办法就是用一个<code>while</code>循环。代码如下。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="hl"><span class="lnt">10
+</span></span><span class="hl"><span class="lnt">11
+</span></span><span class="hl"><span class="lnt">12
+</span></span><span class="hl"><span class="lnt">13
+</span></span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">removeElement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">val</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">nums</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">pivot</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="p">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">pivot</span><span class="p">]</span> <span class="o">==</span> <span class="n">val</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line hl"><span class="cl">                <span class="k">while</span> <span class="n">pivot</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+</span></span><span class="line hl"><span class="cl">                    <span class="n">nums</span><span class="p">[</span><span class="n">pivot</span><span class="p">]</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">pivot</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line hl"><span class="cl">                    <span class="n">pivot</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line hl"><span class="cl">                <span class="n">right</span> <span class="o">-=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">            <span class="k">elif</span> <span class="n">nums</span><span class="p">[</span><span class="n">pivot</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">val</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">left</span> <span class="o">=</span> <span class="n">pivot</span> <span class="o">+</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">right</span> <span class="o">=</span> <span class="n">pivot</span> <span class="o">-</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">-</span> <span class="n">count</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="看讲解后-1">看讲解后</h4>
+
+	</article>
+</main>
+
+
+
+
+
+
+
+  <footer class="mt-8 flex sm:flex-col-reverse justify-between items-center">
+  <p class="mt-0 text-sm">
+    © Yoyo Ono 2022 |
+    <a href="https://gohugo.io" target="_blank" rel="noopener noreferrer">Hugo</a> on
+    <a href="https://github.com/mivinci/hugo-theme-minima" target="_blank" rel="noopener noreferrer">Minima</a>
+  </p>
+  <p class="flex items-center mt-0">
+    
+  </p>
+</footer>
+</body>
+</html>
