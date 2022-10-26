@@ -61,7 +61,7 @@ toc = "bar"
 # **notice**: if you're going to use utterances, you must change the 
 # `repo` to your own repo address that stores comments on your site
 [params.utterances]
-repo = "mivinci/hugo-theme-minima"
+repo = "elcher/codetolearn"
 issueTerm = "pathname"
 
 # **deprecated**
@@ -84,10 +84,10 @@ issueTerm = "pathname"
 # `data/svg.toml` file under the root directory of your blog. 
 # in that file, each line must be formatted as `name = '<svg>'`
 # where `<svg>` is the svg code.
-# [[params.social]]
-# name = "github"  
-# url = "https://github.com/mivinci/hugo-theme-minima"
-# svg = ""
+[[params.social]]
+name = "github"
+url = "https://github.com/elcher/"
+svg = ""
 # [[params.social]]
 # name = "linkedin"
 # url = "https://linkedin/in/leonard-mivinci-63895317a"
